@@ -28,6 +28,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	int		j;
 
+	if (!s1)
+    	{
+       		s1 = malloc(1);
+        	s1[0] = '\0';
+   	}
+    	if (!s2)
+        	return (NULL);
 	i = 0;
 	j = 0;
 	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1 * sizeof(char));
@@ -45,6 +52,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		j++;
 	}
 	str[i] = '\0';
+	free(s1);
 	return (str);
 }
 
