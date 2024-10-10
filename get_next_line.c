@@ -65,19 +65,26 @@ char	*get_next_line(int fd)
 {
 	static char	*stash;
 	char		*line;
-	char		buffer[BUFFER_SIZE + 1];
+	char		*buffer;
 	int			bytes_read;
 
+	bytes_read = 1;
+	
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	bytes_read = 1;
+	buffer = malloc(BUFFER_SIZE + 1 * sizeof(char));
+	if(!buffer)
+		return (NULL);
 	if (!stash)
-		stash = ft_strdup("");
+		stash = ft_strdup("");	
 	while (bytes_read > 0 && !check_newline(stash))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read < 0)
+		{
+			free(buffer);
 			return (NULL);
+		}			
 		buffer[bytes_read] = '\0';
 		stash = ft_strjoin(stash, buffer);
 	}
