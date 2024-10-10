@@ -22,21 +22,19 @@ size_t	ft_strlen(const char *s1)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
 	int		i;
 	int		j;
 
-	if (!s1)
-    	{
-       		s1 = malloc(1);
-        	s1[0] = '\0';
-   	}
-    	if (!s2)
-        	return (NULL);
 	i = 0;
 	j = 0;
+	if (!s1)
+	{
+		s1 = malloc(1);
+		s1[0] = '\0';
+	}
 	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1 * sizeof(char));
 	if (!str)
 		return (NULL);
@@ -46,13 +44,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		i++;
 	}
 	while (s2[j] != '\0')
-	{
-		str[i] = s2[j];
-		i++;
-		j++;
-	}
+		str[i++] = s2[j++];
 	str[i] = '\0';
-	free(s1);
+	free (s1);
 	return (str);
 }
 
@@ -96,4 +90,22 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	str[i] = '\0';
 	return (str);
+}
+
+char	*ft_strchr(char *str, int search_str)
+{
+	int		i;
+	char	character;
+
+	character = (char)search_str;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == character)
+			return ((char *)&str[i]);
+		i++;
+	}
+	if (character == '\0')
+		return ((char *)&str[i]);
+	return (NULL);
 }
