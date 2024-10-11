@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: narrospi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 15:32:16 by narrospi          #+#    #+#             */
-/*   Updated: 2024/10/07 15:32:22 by narrospi         ###   ########.fr       */
+/*   Created: 2024/10/11 11:50:27 by narrospi          #+#    #+#             */
+/*   Updated: 2024/10/11 11:50:29 by narrospi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		s1 = malloc(1);
 		s1[0] = '\0';
 	}
-	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1 * sizeof(char));
+	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
 	while (s1[i] != '\0')
@@ -52,40 +52,16 @@ char	*ft_strjoin(char *s1, char *s2)
 
 char	*ft_strdup(const char *s)
 {
-	char	*s_copy;
+	char	*str;
 	size_t	i;
 
-	s_copy = malloc(ft_strlen(s) + 1 * sizeof(char));
-	if (!s_copy)
+	str = malloc(ft_strlen(s) + 1 * sizeof(char));
+	if (!str)
 		return (NULL);
 	i = 0;
 	while (s[i] != '\0')
 	{
-		s_copy[i] = s[i];
-		i++;
-	}
-	s_copy[i] = '\0';
-	return (s_copy);
-}
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	unsigned int	i;
-	char			*str;
-
-	i = 0;
-	if (!s)
-		return (NULL);
-	if (start >= ft_strlen(s))
-		return (ft_strdup(""));
-	if (len > ft_strlen(s + start))
-		len = ft_strlen(s + start);
-	str = malloc(len + 1 * sizeof(char));
-	if (!str)
-		return (NULL);
-	while (i < len)
-	{
-		str[i] = s[start + i];
+		str[i] = s[i];
 		i++;
 	}
 	str[i] = '\0';
@@ -97,8 +73,8 @@ char	*ft_strchr(char *str, int search_str)
 	int		i;
 	char	character;
 
-	character = (char)search_str;
 	i = 0;
+	character = (char)search_str;
 	while (str[i] != '\0')
 	{
 		if (str[i] == character)
