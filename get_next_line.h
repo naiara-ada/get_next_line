@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: narrospi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 15:32:38 by narrospi          #+#    #+#             */
-/*   Updated: 2024/10/07 15:32:40 by narrospi         ###   ########.fr       */
+/*   Created: 2024/10/11 11:50:45 by narrospi          #+#    #+#             */
+/*   Updated: 2024/10/11 11:50:50 by narrospi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2
+#  define BUFFER_SIZE 1
 # endif
 
 char	*get_next_line(int fd);
-char	*ft_strjoin(char const *s1, char const *s2);
-size_t	ft_strlen( const char *s1);
+size_t	ft_strlen(const char *s1);
+char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(const char *s);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strchr(char *str, int search_str);
 
 #endif
